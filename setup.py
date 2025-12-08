@@ -5,7 +5,6 @@ from setuptools import setup
 
 version = "1.1.1.dev0"
 
-tests_require = ["plone.app.testing"]
 
 long_description = (
     f"{Path('README.md').read_text()}\n" f"{Path('CHANGES.md').read_text()}\n"
@@ -50,11 +49,17 @@ setup(
     python_requires=">=3.10",
     install_requires=[
         "setuptools",
-        "Plone",
+        "zope.component",
+        "zope.interface",
         "requests",
     ],
-    tests_require=tests_require,
-    extras_require=dict(tests=tests_require),
+    extras_require={
+        "tests": [
+            "plone.app.testing",
+            "zope.configuration",
+            "transaction",
+        ]
+    },
     entry_points="""
     # -*- Entry points: -*-
     [z3c.autoinclude.plugin]
