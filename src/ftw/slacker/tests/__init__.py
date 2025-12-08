@@ -6,7 +6,6 @@ from plone.app.testing import TEST_USER_ID
 from unittest import TestCase
 
 import os
-import sys
 import transaction
 
 
