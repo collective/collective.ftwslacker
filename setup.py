@@ -1,5 +1,4 @@
 from pathlib import Path
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -19,9 +18,7 @@ setup(
     classifiers=[
         "Development Status :: 6 - Mature",
         "Environment :: Web Environment",
-        "Framework :: Plone :: 4.3",
-        "Framework :: Plone :: 5.1",
-        "Framework :: Plone :: 5.2",
+        "Framework :: Plone :: 6.2",
         "Framework :: Plone :: Addon",
         "Framework :: Plone",
         "Framework :: Zope :: 2",
@@ -41,14 +38,10 @@ setup(
     author_email="mailto:info@4teamwork.ch",
     url="https://git.4teamwork.ch/ftw/ftw.slacker",
     license="GPL2",
-    packages=find_packages("src"),
-    namespace_packages=["ftw"],
-    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     python_requires=">=3.10",
     install_requires=[
-        "setuptools",
         "zope.component",
         "zope.interface",
         "requests",
