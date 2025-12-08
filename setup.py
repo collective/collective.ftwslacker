@@ -12,7 +12,7 @@ setup(
     version=version,
     description='Uses webhooks to post messages into a slack channel.',
     long_description=(open('README.rst').read() + '\n' +
-                      open(os.path.join('docs', 'HISTORY.txt')).read()),
+                      open('CHANGES.rst').read()),
     classifiers=[
         "Development Status :: 6 - Mature",
         "Environment :: Web Environment",
