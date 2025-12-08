@@ -15,8 +15,8 @@ class FunctionalTestCase(TestCase):
     layer = FTW_SLACKER_FUNCTIONAL_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
-        self.request = self.layer['request']
+        self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
 
     def grant(self, *roles):
         setRoles(self.portal, TEST_USER_ID, list(roles))
@@ -24,9 +24,9 @@ class FunctionalTestCase(TestCase):
 
     def assertItemsEqual(self, actual, expected, msg=None):
         """Test that sequence expected contains the same elements as actual.
-           regardless of their order.
+        regardless of their order.
 
-           This method is renamed to assertCountEqual in Python 3.
+        This method is renamed to assertCountEqual in Python 3.
         """
         return self.assertCountEqual(actual, expected, msg)
         return super().assertItemsEqual(actual, expected, msg)
@@ -44,7 +44,7 @@ class RequestsMock:
         self.posts = []
 
     def post(self, url, **kwargs):
-        kwargs['url'] = url
+        kwargs["url"] = url
         self.posts.append(kwargs)
         return ResponseStub()
 

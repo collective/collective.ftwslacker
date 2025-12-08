@@ -4,18 +4,15 @@ from setuptools import setup
 import os
 
 
-version = '1.1.1.dev0'
+version = "1.1.1.dev0"
 
-tests_require = [
-    'plone.app.testing'
-]
+tests_require = ["plone.app.testing"]
 
 setup(
-    name='ftw.slacker',
+    name="ftw.slacker",
     version=version,
-    description='Uses webhooks to post messages into a slack channel.',
-    long_description=(open('README.rst').read() + '\n' +
-                      open('CHANGES.rst').read()),
+    description="Uses webhooks to post messages into a slack channel.",
+    long_description=(open("README.rst").read() + "\n" + open("CHANGES.rst").read()),
     classifiers=[
         "Development Status :: 6 - Mature",
         "Environment :: Web Environment",
@@ -34,23 +31,20 @@ setup(
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-
-    keywords='ftw slacker slack webhoock api',
-    author='4teamwork AG',
-    author_email='mailto:info@4teamwork.ch',
-    url='https://git.4teamwork.ch/ftw/ftw.slacker',
-    license='GPL2',
-
-    packages=find_packages('src'),
-    namespace_packages=['ftw'],
-    package_dir={'': 'src'},
+    keywords="ftw slacker slack webhoock api",
+    author="4teamwork AG",
+    author_email="mailto:info@4teamwork.ch",
+    url="https://git.4teamwork.ch/ftw/ftw.slacker",
+    license="GPL2",
+    packages=find_packages("src"),
+    namespace_packages=["ftw"],
+    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-
     install_requires=[
-        'setuptools',
-        'Plone',
-        'requests',
+        "setuptools",
+        "Plone",
+        "requests",
     ],
     tests_require=tests_require,
     extras_require=dict(tests=tests_require),
