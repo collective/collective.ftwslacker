@@ -2,6 +2,7 @@ from ftw.slacker.interfaces import ISlackNotifier
 from threading import Thread
 from zope.component import getUtility
 from zope.interface import implementer
+
 import os
 import requests
 
