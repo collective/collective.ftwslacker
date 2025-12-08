@@ -27,7 +27,7 @@ DEACTIVATE_SLACK_NOTIFICATION = 'DEACTIVATE_SLACK_NOTIFICATION'
 
 
 @implementer(ISlackNotifier)
-class SlackNotifier(object):
+class SlackNotifier:
     """The default slack notifier utility posts a message into slack through
     a webhook.
     """

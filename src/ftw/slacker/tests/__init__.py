@@ -27,18 +27,17 @@ class FunctionalTestCase(TestCase):
 
            This method is renamed to assertCountEqual in Python 3.
         """
-        if sys.version_info > (3, 0):
-            return self.assertCountEqual(actual, expected, msg)
-        return super(FunctionalTestCase, self).assertItemsEqual(actual, expected, msg)
+        return self.assertCountEqual(actual, expected, msg)
+        return super().assertItemsEqual(actual, expected, msg)
 
 
-class ResponseStub(object):
+class ResponseStub:
 
     def raise_for_status(self):
         pass
 
 
-class RequestsMock(object):
+class RequestsMock:
 
     def __init__(self):
         self.posts = []
@@ -59,7 +58,7 @@ class RequestsMock(object):
             slack_notifier.requests = original_requests
 
 
-class ActivateEnvVariables(object):
+class ActivateEnvVariables:
     def __init__(self, **kwargs):
         self.variables = kwargs
 
