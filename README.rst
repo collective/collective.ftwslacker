@@ -71,14 +71,14 @@ Following properties are passed to the requests module:
 - `timeout <http://docs.python-requests.org/en/master/user/quickstart/#timeouts>`_
 - `verify <http://docs.python-requests.org/en/master/user/advanced/#ssl-cert-verification>`_
 
-That means, you can call the api-function with this parameteres to configure the request:
+That means, you can call the api-function with this parameters to configure the request:
 
 .. code:: python
 
   from ftw.slacker import notify_slack
 
   notify_slack(webhook_url='https://hooks.slack.com/services/xxx',
-               timemout=10,
+               timeout=10,
                verify=False,
                text="my first post")
 
@@ -216,7 +216,7 @@ to the standard webhook url or you can call it with a more specific webhook url
 Using the NOTIFICATION_DEACTIVATION_VALUE as the webhook_url will just deactivate
 the current notification and will not bubble up to the standard slack webhook.
 
-This feature is expecially useful for handling notification comming from multiple
+This feature is especially useful for handling notification coming from multiple
 external modules using the slacker-integration.
 
 See the next chapter for more information about advanced usage.

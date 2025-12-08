@@ -19,7 +19,7 @@ class FtwSlackerLayer(PloneSandboxLayer):
         xmlconfig.file("configure.zcml", ftw.slacker, context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        # Actiavte notifications for testing
+        # Activate notifications for testing
         os.environ[DEACTIVATE_SLACK_NOTIFICATION] = ""
 
         # Reset the webhook url. You have to set it explicitly in tests.
