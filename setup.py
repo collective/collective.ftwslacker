@@ -54,7 +54,7 @@ setup(
         "requests",
     ],
     extras_require={
-        "tests": [
+        "test": [
             "plone.app.testing",
             "zope.configuration",
             "transaction",
