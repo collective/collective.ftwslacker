@@ -1,3 +1,4 @@
+from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
 
@@ -6,11 +7,16 @@ version = "1.1.1.dev0"
 
 tests_require = ["plone.app.testing"]
 
+long_description = (
+    f"{Path('README.md').read_text()}\n" f"{Path('CHANGES.md').read_text()}\n"
+)
+
 setup(
     name="ftw.slacker",
     version=version,
     description="Uses webhooks to post messages into a slack channel.",
-    long_description=(open("README.rst").read() + "\n" + open("CHANGES.rst").read()),
+    long_description_content_type="text/markdown",
+    long_description=long_description,
     classifiers=[
         "Development Status :: 6 - Mature",
         "Environment :: Web Environment",

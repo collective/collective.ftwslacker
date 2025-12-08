@@ -1,6 +1,5 @@
 recursive-include src *
-include *.txt
-include *.rst
+include *.md
 global-exclude *.pyc
 recursive-exclude news *
 exclude news
