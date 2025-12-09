@@ -1,24 +1,24 @@
-from setuptools import setup, find_packages
-import os
+from pathlib import Path
+from setuptools import setup
 
-version = '1.1.1.dev0'
 
-tests_require = [
-    'plone.app.testing'
-]
+version = "2.0.0.dev0"
+
+
+long_description = (
+    f"{Path('README.md').read_text()}\n" f"{Path('CHANGES.md').read_text()}\n"
+)
 
 setup(
-    name='ftw.slacker',
+    name="ftw.slacker",
     version=version,
-    description='Uses webhooks to post messages into a slack channel.',
-    long_description=(open('README.rst').read() + '\n' +
-                      open(os.path.join('docs', 'HISTORY.txt')).read()),
+    description="Uses webhooks to post messages into a slack channel.",
+    long_description_content_type="text/markdown",
+    long_description=long_description,
     classifiers=[
         "Development Status :: 6 - Mature",
         "Environment :: Web Environment",
-        "Framework :: Plone :: 4.3",
-        "Framework :: Plone :: 5.1",
-        "Framework :: Plone :: 5.2",
+        "Framework :: Plone :: 6.2",
         "Framework :: Plone :: Addon",
         "Framework :: Plone",
         "Framework :: Zope :: 2",
@@ -26,30 +26,33 @@ setup(
         "Framework :: Zope",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-
-    keywords='ftw slacker slack webhoock api',
-    author='4teamwork AG',
-    author_email='mailto:info@4teamwork.ch',
-    url='https://git.4teamwork.ch/ftw/ftw.slacker',
-    license='GPL2',
-
-    packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['ftw'],
+    keywords="ftw slacker slack webhoock api",
+    author="4teamwork AG",
+    author_email="mailto:info@4teamwork.ch",
+    url="https://git.4teamwork.ch/ftw/ftw.slacker",
+    license="GPL2",
     include_package_data=True,
     zip_safe=False,
-
+    python_requires=">=3.10",
     install_requires=[
-        'setuptools',
-        'Plone',
-        'requests',
+        "zope.component",
+        "zope.interface",
+        "requests",
     ],
-    tests_require=tests_require,
-    extras_require=dict(tests=tests_require),
+    extras_require={
+        "test": [
+            "plone.app.testing",
+            "zope.configuration",
+            "transaction",
+        ]
+    },
     entry_points="""
     # -*- Entry points: -*-
     [z3c.autoinclude.plugin]

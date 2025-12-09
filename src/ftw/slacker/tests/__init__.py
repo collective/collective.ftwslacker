@@ -1,12 +1,12 @@
 from contextlib import contextmanager
+from ftw.slacker import slack_notifier
 from ftw.slacker.testing import FTW_SLACKER_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from unittest import TestCase
-from ftw.slacker import slack_notifier
-import transaction
+
 import os
-import sys
+import transaction
 
 
 class FunctionalTestCase(TestCase):
@@ -14,8 +14,8 @@ class FunctionalTestCase(TestCase):
     layer = FTW_SLACKER_FUNCTIONAL_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
-        self.request = self.layer['request']
+        self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
 
     def grant(self, *roles):
         setRoles(self.portal, TEST_USER_ID, list(roles))
@@ -23,28 +23,27 @@ class FunctionalTestCase(TestCase):
 
     def assertItemsEqual(self, actual, expected, msg=None):
         """Test that sequence expected contains the same elements as actual.
-           regardless of their order.
+        regardless of their order.
 
-           This method is renamed to assertCountEqual in Python 3.
+        This method is renamed to assertCountEqual in Python 3.
         """
-        if sys.version_info > (3, 0):
-            return self.assertCountEqual(actual, expected, msg)
-        return super(FunctionalTestCase, self).assertItemsEqual(actual, expected, msg)
+        return self.assertCountEqual(actual, expected, msg)
+        return super().assertItemsEqual(actual, expected, msg)
 
 
-class ResponseStub(object):
+class ResponseStub:
 
     def raise_for_status(self):
         pass
 
 
-class RequestsMock(object):
+class RequestsMock:
 
     def __init__(self):
         self.posts = []
 
     def post(self, url, **kwargs):
-        kwargs['url'] = url
+        kwargs["url"] = url
         self.posts.append(kwargs)
         return ResponseStub()
 
@@ -59,7 +58,7 @@ class RequestsMock(object):
             slack_notifier.requests = original_requests
 
 
-class ActivateEnvVariables(object):
+class ActivateEnvVariables:
     def __init__(self, **kwargs):
         self.variables = kwargs
 

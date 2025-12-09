@@ -2,6 +2,7 @@ from ftw.slacker.interfaces import ISlackNotifier
 from threading import Thread
 from zope.component import getUtility
 from zope.interface import implementer
+
 import os
 import requests
 
@@ -19,25 +20,24 @@ def notify_slack(*args, **kwargs):
 
 # Use this string in your environment variables to deactivamete
 # notification.
-NOTIFICATION_DEACTIVATION_VALUE = 'deactivate'
+NOTIFICATION_DEACTIVATION_VALUE = "deactivate"
 
 # Possible environment variables
-STANDARD_SLACK_WEBHOOK = 'STANDARD_SLACK_WEBHOOK'
-DEACTIVATE_SLACK_NOTIFICATION = 'DEACTIVATE_SLACK_NOTIFICATION'
+STANDARD_SLACK_WEBHOOK = "STANDARD_SLACK_WEBHOOK"
+DEACTIVATE_SLACK_NOTIFICATION = "DEACTIVATE_SLACK_NOTIFICATION"
 
 
 @implementer(ISlackNotifier)
-class SlackNotifier(object):
+class SlackNotifier:
     """The default slack notifier utility posts a message into slack through
     a webhook.
     """
 
     # Name of the request thread
-    THREAD_NAME = 'SlackNotifier-Thread'
+    THREAD_NAME = "SlackNotifier-Thread"
 
     def notify(self, webhook_url=None, timeout=2, verify=True, **payload):
-        """Performs the slack notification
-        """
+        """Performs the slack notification"""
         if self._is_notification_globally_deactivated():
             return
 
@@ -45,21 +45,24 @@ class SlackNotifier(object):
         if self._is_notification_deactivated(webhook_url):
             return
 
-        thread = Thread(target=self._do_request,
-                        name=self.THREAD_NAME,
-                        args=(webhook_url, timeout, verify),
-                        kwargs=payload)
+        thread = Thread(
+            target=self._do_request,
+            name=self.THREAD_NAME,
+            args=(webhook_url, timeout, verify),
+            kwargs=payload,
+        )
 
         thread.start()
         return thread
 
     def _do_request(self, webhook_url=None, timeout=2, verify=True, **payload):
-        """Actually performs the request.
-        """
-        requests.post(webhook_url,
-                      timeout=timeout,
-                      verify=verify,
-                      json=payload,).raise_for_status()
+        """Actually performs the request."""
+        requests.post(
+            webhook_url,
+            timeout=timeout,
+            verify=verify,
+            json=payload,
+        ).raise_for_status()
 
     def _choose_webhook_url(self, webhook_url):
         """Chooses the proper webhook_url. It returns the current webhook_url or a
@@ -68,8 +71,7 @@ class SlackNotifier(object):
         return webhook_url or os.environ.get(STANDARD_SLACK_WEBHOOK)
 
     def _is_notification_deactivated(self, webhook_url):
-        """Checks if the notification is deactivated based on the current webhook_url.
-        """
+        """Checks if the notification is deactivated based on the current webhook_url."""
         if not webhook_url:
             return True
         return webhook_url.lower() == NOTIFICATION_DEACTIVATION_VALUE
