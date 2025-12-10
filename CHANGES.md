@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0a0 (2025-12-10)
+
+
+### Breaking changes:
+
+- Replace `pkg_resources` namespace with PEP 420 native namespace.
+  Support only Plone 6.2 and Python 3.10+. @gforcada #3928
+
+
+### New features:
+
+- Modernize scaffolding to use `plone.meta` @gforcada 
+
 ## 1.1.0 (2019-11-27)
 
 - Remove support for Plone 5.0 @mbaechtold
