@@ -1,5 +1,5 @@
-from ftw.slacker.slack_notifier import DEACTIVATE_SLACK_NOTIFICATION
-from ftw.slacker.slack_notifier import STANDARD_SLACK_WEBHOOK
+from collective.ftwslacker.slack_notifier import DEACTIVATE_SLACK_NOTIFICATION
+from collective.ftwslacker.slack_notifier import STANDARD_SLACK_WEBHOOK
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
@@ -14,9 +14,9 @@ class FtwSlackerLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
-        import ftw.slacker
+        import collective.ftwslacker
 
-        xmlconfig.file("configure.zcml", ftw.slacker, context=configurationContext)
+        xmlconfig.file("configure.zcml", collective.ftwslacker, context=configurationContext)
 
     def setUpPloneSite(self, portal):
         # Activate notifications for testing
@@ -28,5 +28,5 @@ class FtwSlackerLayer(PloneSandboxLayer):
 
 FTW_SLACKER_FIXTURE = FtwSlackerLayer()
 FTW_SLACKER_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(FTW_SLACKER_FIXTURE,), name="ftw.slacker:Functional"
+    bases=(FTW_SLACKER_FIXTURE,), name="collective.ftwslacker:Functional"
 )

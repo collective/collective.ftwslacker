@@ -1,1 +1,1 @@
-from ftw.slacker.slack_notifier import notify_slack  # noqa: F401
+from collective.ftwslacker.slack_notifier import notify_slack  # noqa: F401

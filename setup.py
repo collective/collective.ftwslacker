@@ -10,7 +10,7 @@ long_description = (
 )
 
 setup(
-    name="ftw.slacker",
+    name="collective.ftwslacker",
     version=version,
     description="Uses webhooks to post messages into a slack channel.",
     long_description_content_type="text/markdown",
@@ -33,10 +33,10 @@ setup(
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    keywords="ftw slacker slack webhoock api",
+    keywords="ftw slacker slack webhook api",
     author="4teamwork AG",
     author_email="mailto:info@4teamwork.ch",
-    url="https://git.4teamwork.ch/ftw/ftw.slacker",
+    url="https://github.com/collective/collective.ftwslacker",
     license="GPL2",
     include_package_data=True,
     zip_safe=False,
