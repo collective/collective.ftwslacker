@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0a1 (2025-12-12)
+
+
+### Breaking changes:
+
+- Rename distribution to `collective.ftwslacker` @gforcada #3
+
 ## 2.0.0a0 (2025-12-10)
 
 
