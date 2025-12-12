@@ -1,8 +1,8 @@
-# ftw.slacker
+# collective.ftwslacker
 
 ## Introduction
 
-The `ftw.slacker` is a Plone addon that provides an easy to use api to post messages into a Slack channel through Slack's webhooks api.
+The `collective.ftwslacker` is a Plone addon that provides an easy to use api to post messages into a Slack channel through Slack's webhooks api.
 
 For more information about slack webhooks see Slack's documentation about [Incoming Webhooks]
 
@@ -14,7 +14,7 @@ Add the package as dependency to your setup.py:
 setup(
     # ...
     install_requires=[
-      'ftw.slacker',
+      'collective.ftwslacker',
 ])
 ```
 
@@ -22,7 +22,7 @@ or to your buildout configuration:
 
 ```ini
 [instance]
-eggs += ftw.slacker
+eggs += collective.ftwslacker
 ```
 
 and run buildout
@@ -46,7 +46,7 @@ setting up your own webhock by follow the [incoming webhook integration](https:/
 Just import the `notify_slack` api function and call it.
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 
 notify_slack('https://hooks.slack.com/services/xxx',
              text="my first post")
@@ -65,7 +65,7 @@ Following properties are passed to the requests module:
 That means, you can call the api-function with this parameters to configure the request:
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 
 notify_slack(webhook_url='https://hooks.slack.com/services/xxx',
              timeout=10,
@@ -79,7 +79,7 @@ Just add additional keyword arguments to the api-function. All parameters will b
 as payload to the Slack webhook.
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 
 notify_slack('https://hooks.slack.com/services/xxx',
              text="my first post",
@@ -96,7 +96,7 @@ notify_slack('https://hooks.slack.com/services/xxx',
 
 Normally you don't want to store your webhook-url in your application code.
 
-`ftw.slacker` supports configuration through environment-variables:
+`collective.ftwslacker` supports configuration through environment-variables:
 
 Set your environment variable:
 
@@ -115,7 +115,7 @@ environment-vars +=
 and call the api-function without webhook_url parameter:
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 
 notify_slack(text="my first post")
 ```
@@ -130,7 +130,7 @@ export STANDARD_SLACK_WEBHOOK='https://hooks.slack.com/services/default-channel-
 ```
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 
 # Post message to service default-channel-id
 notify_slack(text="my first post")
@@ -207,7 +207,7 @@ See the next chapter for more information about advanced usage.
 
 ## Advance usage
 
-Perhaps you've got different external modules using the `ftw.slacker` implementation and
+Perhaps you've got different external modules using the `collective.ftwslacker` implementation and
 all of this modules providing a different default slack webhook url.
 
 Let's imagine, we have a module calling `ftw.logger` which logs all user logins within your
@@ -218,7 +218,7 @@ logging-activities to a separate channel. So the implementation of this module m
 look like this:
 
 ```python
-from ftw.slacker import notify_slack
+from collective.ftwslacker import notify_slack
 import os
 
 def notify_user_login(user):
@@ -226,8 +226,8 @@ def notify_user_login(user):
                   text='User {} logged in'.format(user.username))
 ```
 
-If you don't set the `FTW_LOGGER_SLACK_WEBHOOK` variable, `ftw.slacker` will post the user
-login to the default channel. If you set `FTW_LOGGER_SLACK_WEBHOOK`, `ftw.slacker` will
+If you don't set the `FTW_LOGGER_SLACK_WEBHOOK` variable, `collective.ftwslacker` will post the user
+login to the default channel. If you set `FTW_LOGGER_SLACK_WEBHOOK`, `collective.ftwslacker` will
 use this more specific channel for notifications.
 
 Deactivating the whole notification system through the DEACTIVATE_SLACK_NOTIFICATION
@@ -255,11 +255,11 @@ The function `notify_slack` returns the thread-object for further thread handlin
 
 ## Links
 
-- Main project repository: <https://github.com/4teamwork/ftw.slacker>
-- Issue tracker: <https://github.com/4teamwork/ftw.slacker/issues>
+- Main project repository: <https://github.com/collective/collective.ftwslacker>
+- Issue tracker: <https://github.com/collective/collective.ftwslacker/issues>
 
 ## Copyright
 
 This package is copyright by [4teamwork](http://www.4teamwork.ch).
 
-`ftw.slacker` is licensed under GNU General Public License, version 2.
+`collective.ftwslacker` is licensed under GNU General Public License, version 2.
