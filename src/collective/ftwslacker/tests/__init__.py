@@ -1,6 +1,6 @@
-from contextlib import contextmanager
 from collective.ftwslacker import slack_notifier
 from collective.ftwslacker.testing import FTW_SLACKER_FUNCTIONAL_TESTING
+from contextlib import contextmanager
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from unittest import TestCase

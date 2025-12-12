@@ -16,7 +16,9 @@ class FtwSlackerLayer(PloneSandboxLayer):
         # Load ZCML
         import collective.ftwslacker
 
-        xmlconfig.file("configure.zcml", collective.ftwslacker, context=configurationContext)
+        xmlconfig.file(
+            "configure.zcml", collective.ftwslacker, context=configurationContext
+        )
 
     def setUpPloneSite(self, portal):
         # Activate notifications for testing
